@@ -9,7 +9,8 @@ const Form = ({ onCityAdd }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=78e017ce4d9f557fb7da255863ad0305&units=metric`);
+      const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
+      const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
       onCityAdd(response.data);
       setCity('');
       setError('');
